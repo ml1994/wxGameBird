@@ -3,7 +3,7 @@
 * @Author: ma.cq
 * @Date: 2019-01-28 10:56:04
  * @LastEditors: ma.cq
- * @LastEditTime: 2019-01-29 17:31:45
+ * @LastEditTime: 2019-01-30 16:55:11
 */
 
 import { ResourceLoader } from './js/base/ResourceLoader'
@@ -11,6 +11,9 @@ import { Background } from './js/runtime/Background'
 import { Land } from './js/runtime/Land'
 import { DataStore } from './js/base/DataStore'
 import { Director } from './js/Director'
+import { Birds } from './js/player/Birds'
+import { StartButton } from './js/player/StartButton'
+import { Score } from './js/player/Score'
 
 export class Main {
   constructor () {
@@ -32,6 +35,7 @@ export class Main {
    */
   onResourceFirstLoaded (map) {
     // 直接挂载在store对象上，不随游戏重新开始被销毁
+    this.dataStore.canvas = this.canvas
     this.dataStore.ctx = this.ctx
     this.dataStore.res = map
     this.init()
@@ -46,8 +50,23 @@ export class Main {
       .put('pencils', [])
       .put('background', Background)
       .put('land', Land)
+      .put('birds', Birds)
+      .put('startButton', StartButton)
+      .put('score', Score)
     
+    this.registerEvent()
+
     this.director.createPencil()
     this.director.run()
+  }
+
+  registerEvent () {
+    wx.onTouchStart(() => {
+      if (this.director.isGameOver) {
+        this.init()
+      } else {
+        this.director.birdJump()
+      }
+    })
   }
 }
