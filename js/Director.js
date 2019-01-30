@@ -3,7 +3,7 @@
  * @Author: ma.cq
  * @Date: 2019-01-28 10:54:17
  * @LastEditors: ma.cq
- * @LastEditTime: 2019-01-30 17:09:20
+ * @LastEditTime: 2019-01-30 17:46:53
  */
 
 import { Background } from './runtime/Background'
@@ -85,6 +85,8 @@ export class Director {
     if (birds.birdsX[0] > pencils[0].x + pencils[0].width && score.canAdd) {
       score.canAdd = false
       score.scoreNumber++
+      // 加分震动
+      wx.vibrateShort()
     }
   }
 
@@ -120,6 +122,8 @@ export class Director {
       cancelAnimationFrame(this.dataStore.get('timer'))
       this.dataStore.destory()
       this.dataStore.get('startButton').draw()
+      // 垃圾回收
+      wx.triggerGC()
     }
   }
 }

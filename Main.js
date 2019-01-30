@@ -3,7 +3,7 @@
 * @Author: ma.cq
 * @Date: 2019-01-28 10:56:04
  * @LastEditors: ma.cq
- * @LastEditTime: 2019-01-30 17:01:56
+ * @LastEditTime: 2019-01-30 17:30:57
 */
 
 import { ResourceLoader } from './js/base/ResourceLoader'
@@ -28,6 +28,14 @@ export class Main {
       this.onResourceFirstLoaded(map)
     })
   }
+
+  createBgMusic () {
+    const bgm = wx.createInnerAudioContext()
+    bgm.loop = true
+    bgm.autoplay = true
+    bgm.src = './audios/bgm.mp3'
+  }
+
   /**
    * @description: 资源第一次加载完成（重新开始只需重置逻辑，不需重置资源）
    * @param {type} 资源map
@@ -38,6 +46,7 @@ export class Main {
     this.dataStore.canvas = this.canvas
     this.dataStore.ctx = this.ctx
     this.dataStore.res = map
+    this.createBgMusic()
     this.init()
   }
 
