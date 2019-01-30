@@ -3,9 +3,10 @@
  * @Author: ma.cq
  * @Date: 2019-01-29 15:13:37
  * @LastEditors: ma.cq
- * @LastEditTime: 2019-01-29 16:59:49
+ * @LastEditTime: 2019-01-30 17:03:44
  */
 import { Sprite } from '../base/Sprite'
+import { DataStore } from '../base/DataStore'
 
 export class Pencil extends Sprite {
   constructor (image, top) {
@@ -13,7 +14,7 @@ export class Pencil extends Sprite {
       image,
       0, 0,
       image.width, image.height,
-      window.innerWidth, 0,
+      DataStore.getInstance().canvas.width, 0,
       image.width, image.height
     )
     this.top = top

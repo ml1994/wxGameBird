@@ -3,10 +3,11 @@
  * @Author: ma.cq
  * @Date: 2019-01-28 10:53:09
  * @LastEditors: ma.cq
- * @LastEditTime: 2019-01-29 16:43:34
+ * @LastEditTime: 2019-01-30 17:04:12
  */
 import { Sprite } from '../base/Sprite'
 import { Pencil } from './Pencil'
+import { DataStore } from '../base/DataStore'
 
 export class DownPencil extends Pencil {
   constructor (top) {
@@ -15,7 +16,7 @@ export class DownPencil extends Pencil {
   }
 
   draw () {
-    const gap = window.innerHeight / 5
+    const gap = DataStore.getInstance().canvas.height / 5
     this.y = this.top + gap
     super.draw()
   }

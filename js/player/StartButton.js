@@ -3,9 +3,10 @@
  * @Author: ma.cq
  * @Date: 2019-01-28 10:50:38
  * @LastEditors: ma.cq
- * @LastEditTime: 2019-01-30 16:23:56
+ * @LastEditTime: 2019-01-30 17:03:27
  */
 import { Sprite } from '../base/Sprite'
+import { DataStore } from '../base/DataStore'
 
 export class StartButton extends Sprite {
   constructor () {
@@ -14,7 +15,7 @@ export class StartButton extends Sprite {
       image,
       0, 0,
       image.width, image.height,
-      (window.innerWidth - image.width) / 2, (window.innerHeight - image.height) / 2,
+      (DataStore.getInstance().canvas.width - image.width) / 2, (DataStore.getInstance().canvas.height - image.height) / 2,
       image.width, image.height
     )
   }

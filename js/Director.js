@@ -3,7 +3,7 @@
  * @Author: ma.cq
  * @Date: 2019-01-28 10:54:17
  * @LastEditors: ma.cq
- * @LastEditTime: 2019-01-30 16:50:03
+ * @LastEditTime: 2019-01-30 17:09:20
  */
 
 import { Background } from './runtime/Background'
@@ -25,8 +25,8 @@ export class Director {
   }
 
   createPencil () {
-    const minTop = window.innerHeight / 8
-    const maxTop = window.innerHeight / 2
+    const minTop = this.dataStore.canvas.height / 8
+    const maxTop = this.dataStore.canvas.height / 2
     const top = minTop + Math.random() * (maxTop - minTop)
     this.dataStore.get('pencils').push(new UpPencil(top))
     this.dataStore.get('pencils').push(new DownPencil(top))
@@ -101,7 +101,7 @@ export class Director {
         // 铅笔回收时开启可加分开关
         this.dataStore.get('score').canAdd = true
       }
-      if (pencils[0].x <= (window.innerWidth - pencils[0].width) / 2 && pencils.length === 2) {
+      if (pencils[0].x <= (this.dataStore.canvas.width - pencils[0].width) / 2 && pencils.length === 2) {
         this.createPencil()
       }
       this.dataStore.get('pencils').forEach(value => {
@@ -117,9 +117,9 @@ export class Director {
       this.dataStore.put('timer', timer)
     } else { 
       // 游戏结束
-      this.dataStore.get('startButton').draw()
       cancelAnimationFrame(this.dataStore.get('timer'))
       this.dataStore.destory()
+      this.dataStore.get('startButton').draw()
     }
   }
 }

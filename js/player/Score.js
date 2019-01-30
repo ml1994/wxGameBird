@@ -18,6 +18,6 @@ export class Score {
   draw () {
     this.ctx.font = '25px Arial'
     this.ctx.fillStyle = '#acf'
-    this.ctx.fillText(this.scoreNumber, window.innerWidth / 2, window.innerHeight / 18, 1000)
+    this.ctx.fillText(this.scoreNumber, DataStore.getInstance().canvas.width / 2, DataStore.getInstance().canvas.height / 18, 1000)
   }
 }

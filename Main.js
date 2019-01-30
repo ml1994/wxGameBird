@@ -3,7 +3,7 @@
 * @Author: ma.cq
 * @Date: 2019-01-28 10:56:04
  * @LastEditors: ma.cq
- * @LastEditTime: 2019-01-30 16:55:11
+ * @LastEditTime: 2019-01-30 17:01:56
 */
 
 import { ResourceLoader } from './js/base/ResourceLoader'

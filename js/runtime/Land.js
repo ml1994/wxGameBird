@@ -3,10 +3,11 @@
  * @Author: ma.cq
  * @Date: 2019-01-28 10:52:10
  * @LastEditors: ma.cq
- * @LastEditTime: 2019-01-29 16:36:22
+ * @LastEditTime: 2019-01-30 17:02:51
  */
 import { Sprite } from '../base/Sprite'
 import { Director } from '../Director'
+import { DataStore } from '../base/DataStore'
 
 export class Land extends Sprite{
   constructor () {
@@ -15,7 +16,7 @@ export class Land extends Sprite{
       image,
       0, 0,
       image.width, image.height,
-      0, window.innerHeight - image.height,
+      0, DataStore.getInstance().canvas.height - image.height,
       image.width, image.height
     )
     // 地板x坐标
@@ -26,7 +27,7 @@ export class Land extends Sprite{
 
   draw () {
     this.landX += this.landSpeed
-    if (this.landX >= this.width - window.innerWidth) {
+    if (this.landX >= this.width - DataStore.getInstance().canvas.width) {
       this.landX = 0
     }
     super.draw(
